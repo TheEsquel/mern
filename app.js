@@ -2,7 +2,6 @@ const express = require('express')
 const config = require('config')
 const mongoose = require('mongoose')
 const authRouter = require('./routes/auth.route')
-
 const app = express()
 
 app.use('/api/auth', authRouter)
