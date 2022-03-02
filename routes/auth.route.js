@@ -16,6 +16,9 @@ router.post(
     ],
     async (req, res) => {
     try {
+
+        console.log("Body", req.body);
+
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).json({
@@ -33,7 +36,7 @@ router.post(
         await user.save()
         return res.status(201).json({ message: 'Пользователь создан' })
     } catch (e) {
-        await res.status(500).json({message: 'Ошибка'})
+        await res.status(500).json({message: 'Ошибка', error: e})
     }
 })
 

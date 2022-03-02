@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, BrowserRouter as Router, Route, Link,  } from 'react-router-dom'
+import { Routes, Route  } from 'react-router-dom'
 import {LinksPage} from "./pages/LinksPage";
 import {CreatePage} from "./pages/CreatePage";
 import {DetailsPage} from "./pages/DetailPage";
