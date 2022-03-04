@@ -15,7 +15,7 @@ export const useHttp = () => {
             const data = await response.json()
 
             if (!response.ok) {
-                throw new Error(data.error || 'some error')
+                throw new Error(data.message || 'some error')
             }
             setLoading(false)
             return data
@@ -26,7 +26,7 @@ export const useHttp = () => {
         }
     }, [])
 
-    const clearError = () => setError(null)
+    const clearError = useCallback(() => setError(null), [] )
 
     return {loading, request, error, clearError}
 }

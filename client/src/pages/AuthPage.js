@@ -10,19 +10,28 @@ export const AuthPage = () => {
     })
 
     useEffect(() => {
-        console.log(error);
         message(error)
-        // clearError()
+        clearError()
     }, [error, message, clearError])
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
     }
 
+    const loginHandler =  async () => {
+        try {
+            const data = await request('/api/auth/login', 'POST', {...form})
+            message(data.message)
+        } catch (e) {
+            
+        }
+    }
+
     const registerHandler = async () => {
         try {
             const data = await request('/api/auth/register', 'POST', {...form})
-            console.log('Data', data);
+            message(data.message)
+            clearError()
         } catch (e) {
 
         }
@@ -64,6 +73,7 @@ export const AuthPage = () => {
                             className='btn yellow darken-3'
                             style={{ marginRight: 10 }}
                             disabled={loading}
+                            onClick={loginHandler}
                         >
                             Log in
                         </button>
