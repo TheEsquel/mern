@@ -7,19 +7,14 @@ import {AuthPage} from "./pages/AuthPage";
 import {Navigate} from "react-router";
 
 export const useRoutes = isAuthenticated => {
+    console.log(isAuthenticated);
     if (isAuthenticated) {
         return (
                 <Routes>
-                    <Route path="/links" exact>
-                        <LinksPage />
-                    </Route>
-                    <Route path="/create" exact>
-                        <CreatePage />
-                    </Route>
-                    <Route path="/details/:id" >
-                        <DetailsPage />
-                    </Route>
-                    <Navigate to='/create' />
+                    <Route path="/links" element={<LinksPage />} />
+                    <Route path="/create" element={<CreatePage />} />
+                    <Route path="//details/:id" element={<DetailsPage />} />
+                    <Route exact path="/" element={<CreatePage  />} />
                 </Routes>
         )
     }

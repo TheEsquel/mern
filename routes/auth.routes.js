@@ -65,7 +65,7 @@ router.post(
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) return res.status(400).json({ message: 'Неверный пароль' })
         console.log(user);
-        console.log(config.jwtKey);
+        console.log(config);
 
         const token = jwt.sign(
             { userId: user._id},
